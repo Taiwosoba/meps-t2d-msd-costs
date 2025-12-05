@@ -33,3 +33,65 @@ meps-t2d-msd-costs/
 │   └── figures/          # PNG/ PDF figures
 └── docs/
     └── report.Rmd        # R Markdown report summarizing the analysis
+
+Analysis Overview
+1. Data Preparation (01_data_prep_meps.R)
+
+Import MEPS public-use files
+
+Select and clean key variables
+
+Prepare pooled analytic dataset
+
+Save as a derived file for downstream steps
+
+2. Cohort Definition (02_define_cohort_t2d_msd.R)
+
+Identify adults (≥18 years) with type 2 diabetes
+
+Flag presence of musculoskeletal disorder (MSD)
+
+Create analytic covariates (e.g., age, sex, region)
+
+Save final study cohort
+
+3. Descriptive Statistics (03_descriptive_statistics.R)
+
+Summaries of baseline characteristics
+
+Stratification by MSD status
+
+Weighted descriptive statistics using MEPS survey weights
+
+Export Table 1
+
+4. Cost Modeling (04_cost_models_glm.R)
+
+Generalized linear models (Gamma + log link)
+
+Adjust for confounders
+
+Estimate incremental annual costs associated with MSD
+
+Export model results
+
+5. Reporting (docs/report.Rmd)
+
+R Markdown report integrating tables, plots, and key findings
+
+Suitable for HEOR deliverables or conference abstracts
+
+Methods & Tools
+
+Data Source: MEPS public-use files
+
+Languages: R
+
+Key Packages: tidyverse, data.table, survey, srvyr, tableone, broom, ggplot2
+
+Analysis Types: Descriptive stats, regression modeling, cost estimation
+
+Disclaimer
+
+This project is for educational and demonstration purposes only.
+No proprietary, confidential, or patient-identifiable data are included.
