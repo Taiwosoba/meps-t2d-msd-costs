@@ -1,0 +1,8 @@
+---
+title: "Healthcare Costs Associated with Musculoskeletal Disorders in Adults with Type 2 Diabetes (MEPS)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
