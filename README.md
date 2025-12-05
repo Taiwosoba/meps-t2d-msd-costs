@@ -118,7 +118,4 @@ This project demonstrates an end-to-end HEOR/RWE workflow using the Medical Expe
 - GitHub version control for reproducible workflow
 - Modular project structure aligned with HEOR/RWE best practices
 
-## Disclaimer
-
-This repository is for **demonstration and educational purposes only**
 
