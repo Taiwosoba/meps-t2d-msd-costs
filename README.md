@@ -34,8 +34,8 @@ meps-t2d-msd-costs/
 └── docs/
     └── report.Rmd        # R Markdown report summarizing the analysis
 
-Analysis Overview
-1. Data Preparation (01_data_prep_meps.R)
+## Analysis Overview
+**1. Data Preparation** (01_data_prep_meps.R)
 
 Import MEPS public-use files
 
@@ -45,7 +45,7 @@ Prepare pooled analytic dataset
 
 Save as a derived file for downstream steps
 
-2. Cohort Definition (02_define_cohort_t2d_msd.R)
+**2. Cohort Definition** (02_define_cohort_t2d_msd.R)
 
 Identify adults (≥18 years) with type 2 diabetes
 
@@ -55,7 +55,7 @@ Create analytic covariates (e.g., age, sex, region)
 
 Save final study cohort
 
-3. Descriptive Statistics (03_descriptive_statistics.R)
+**3. Descriptive Statistics** (03_descriptive_statistics.R)
 
 Summaries of baseline characteristics
 
@@ -65,7 +65,7 @@ Weighted descriptive statistics using MEPS survey weights
 
 Export Table 1
 
-4. Cost Modeling (04_cost_models_glm.R)
+**4. Cost Modeling** (04_cost_models_glm.R)
 
 Generalized linear models (Gamma + log link)
 
@@ -75,7 +75,7 @@ Estimate incremental annual costs associated with MSD
 
 Export model results
 
-5. Reporting (docs/report.Rmd)
+**5. Reporting** (docs/report.Rmd)
 
 R Markdown report integrating tables, plots, and key findings
 
