@@ -33,6 +33,7 @@ meps-t2d-msd-costs/
 │   └── figures/          # PNG/ PDF figures
 └── docs/
     └── report.Rmd        # R Markdown report summarizing the analysis
+```
 
 ## Analysis Overview
 
