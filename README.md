@@ -33,65 +33,89 @@ meps-t2d-msd-costs/
 │   └── figures/          # PNG/ PDF figures
 └── docs/
     └── report.Rmd        # R Markdown report summarizing the analysis
-
 ## Analysis Overview
-**1. Data Preparation** (01_data_prep_meps.R)
 
-Import MEPS public-use files
+This project demonstrates an end-to-end HEOR/RWE workflow using the Medical Expenditure Panel Survey (MEPS) to estimate healthcare utilization and costs associated with musculoskeletal disorders (MSD) among adults with type 2 diabetes (T2D). The analysis follows a structured pipeline commonly used in observational research.
 
-Select and clean key variables
+---
 
-Prepare pooled analytic dataset
+### **1. Data Preparation (`01_data_prep_meps.R`)**
+- Imports MEPS full-year consolidated files and related public-use datasets.  
+- Harmonizes variable names across years and selects relevant demographic and expenditure variables.  
+- Creates a combined dataset with survey weights for nationally representative estimates.  
+- Saves a cleaned, analysis-ready file to `data/derived/`.
 
-Save as a derived file for downstream steps
+---
 
-**2. Cohort Definition** (02_define_cohort_t2d_msd.R)
+### **2. Cohort Definition (`02_define_cohort_t2d_msd.R`)**
+- Identifies adults aged ≥18 years with type 2 diabetes.  
+- Flags musculoskeletal disorders (MSD) using MEPS condition indicators or ICD-based markers (illustrated with synthetic flags in this demo).  
+- Derives covariates such as age groups, sex, geographic region, and insurance.  
+- Filters the dataset to retain the final analysis cohort: adults with T2D, with and without MSD.
 
-Identify adults (≥18 years) with type 2 diabetes
+---
 
-Flag presence of musculoskeletal disorder (MSD)
+### **3. Descriptive Statistics (`03_descriptive_statistics.R`)**
+- Computes weighted descriptive statistics for sociodemographics, comorbidities, and healthcare expenditure variables.  
+- Generates comparison tables between T2D adults with and without MSD (e.g., Table 1 baseline characteristics).  
+- Outputs tables in CSV format to `output/tables/`.
 
-Create analytic covariates (e.g., age, sex, region)
+---
 
-Save final study cohort
+### **4. Cost Modeling (`04_cost_models_glm.R`)**
+- Estimates incremental annual healthcare costs associated with MSD among adults with T2D.  
+- Fits generalized linear models (GLMs) appropriate for skewed cost distributions (e.g., Gamma with log link).  
+- Adjusts for key demographic and clinical covariates.  
+- Produces exponentiated model coefficients and confidence intervals.  
+- Saves model outputs to `output/tables/`.
 
-**3. Descriptive Statistics** (03_descriptive_statistics.R)
+---
 
-Summaries of baseline characteristics
+### **5. Tables, Figures, and Visualization (`05_tables_figures.R`)**
+- Creates visual summaries of expenditure differences or utilization rates.  
+- Generates plots (e.g., boxplots, bar charts) comparing MSD vs non-MSD groups.  
+- Saves figures to `output/figures/`.
 
-Stratification by MSD status
+---
 
-Weighted descriptive statistics using MEPS survey weights
+### **6. Reporting (`docs/report.Rmd`)**
+- Assembles an R Markdown report summarizing:
+  - Background and study rationale  
+  - Cohort derivation steps  
+  - Descriptive statistics  
+  - Cost model results  
+  - Tables and visualizations  
+- Produces a reproducible HTML or PDF report suitable for internal review or scientific communication.
 
-Export Table 1
+---
+## Methods & Tools
 
-**4. Cost Modeling** (04_cost_models_glm.R)
+### Methods Used
+- Cohort identification (Type 2 diabetes, musculoskeletal disorders)
+- Descriptive statistics (survey-weighted)
+- Healthcare expenditure estimation
+- Generalized Linear Models (GLMs) for cost modeling
+- Adjustment for confounders (age, sex, region, etc.)
+- Creation of analysis-ready datasets from MEPS public-use files
+- Reproducible reporting with R Markdown
 
-Generalized linear models (Gamma + log link)
+### R Packages
+- `tidyverse` – data wrangling and visualization  
+- `data.table` – efficient data manipulation  
+- `survey` / `srvyr` – survey-weighted analyses  
+- `tableone` – descriptive statistics tables  
+- `broom` – model tidying  
+- `ggplot2` – plots  
+- `janitor` – variable cleaning  
+- `haven` – import MEPS SAS transport files  
 
-Adjust for confounders
+### Tools & Workflow
+- R (Posit Workbench-compatible code structure)
+- Clearly separated scripts for data prep, cohort creation, analysis, modeling, and reporting
+- GitHub version control for reproducible workflow
+- Modular project structure aligned with HEOR/RWE best practices
 
-Estimate incremental annual costs associated with MSD
+## Disclaimer
 
-Export model results
+This repository is for **demonstration and educational purposes only**
 
-**5. Reporting** (docs/report.Rmd)
-
-R Markdown report integrating tables, plots, and key findings
-
-Suitable for HEOR deliverables or conference abstracts
-
-Methods & Tools
-
-Data Source: MEPS public-use files
-
-Languages: R
-
-Key Packages: tidyverse, data.table, survey, srvyr, tableone, broom, ggplot2
-
-Analysis Types: Descriptive stats, regression modeling, cost estimation
-
-Disclaimer
-
-This project is for educational and demonstration purposes only.
-No proprietary, confidential, or patient-identifiable data are included.
