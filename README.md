@@ -33,6 +33,7 @@ meps-t2d-msd-costs/
 │   └── figures/          # PNG/ PDF figures
 └── docs/
     └── report.Rmd        # R Markdown report summarizing the analysis
+
 ## Analysis Overview
 
 This project demonstrates an end-to-end HEOR/RWE workflow using the Medical Expenditure Panel Survey (MEPS) to estimate healthcare utilization and costs associated with musculoskeletal disorders (MSD) among adults with type 2 diabetes (T2D). The analysis follows a structured pipeline commonly used in observational research.
@@ -88,6 +89,7 @@ This project demonstrates an end-to-end HEOR/RWE workflow using the Medical Expe
 - Produces a reproducible HTML or PDF report suitable for internal review or scientific communication.
 
 ---
+
 ## Methods & Tools
 
 ### Methods Used
