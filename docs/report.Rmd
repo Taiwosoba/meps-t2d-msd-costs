@@ -1,8 +1,93 @@
 ---
 title: "Healthcare Costs Associated with Musculoskeletal Disorders in Adults with Type 2 Diabetes (MEPS)"
+author: "Taiwo Adesoba, PhD"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+
 library(tidyverse)
+library(knitr)
+
+## Background
+
+Musculoskeletal disorders (MSD) are common comorbidities among adults with type 2 diabetes (T2D). These conditions contribute to pain, reduced mobility, diminished quality of life, and increased healthcare resource utilization. Understanding the incremental economic burden of MSD in patients with T2D can inform value assessments, HEOR modeling, and payer decision-making.
+
+This analysis uses publicly available data from the Medical Expenditure Panel Survey (MEPS) to estimate:
+
+- Differences in demographic and clinical characteristics between adults with T2D with vs without MSD  
+- Differences in annual healthcare costs  
+- Incremental expenditures associated with MSD using GLM-based cost models  
+
+## Methods
+
+### Data Source
+We used MEPS Full-Year Consolidated (FYC) files. MEPS is a nationally representative survey of healthcare utilization and costs among U.S. civilians. All analyses use MEPS-provided person-level sampling weights.
+
+### Study Population
+- Adults aged ≥18 years
+- Individuals with type 2 diabetes (T2D)
+- Subgroups defined by presence/absence of musculoskeletal disorders (MSD)
+
+### Outcomes
+- Annual total healthcare expenditures
+- Demographic and clinical characteristics
+- Derived cost differences (unadjusted and adjusted)
+
+### Statistical Analyses
+- Weighted descriptive statistics
+- Comparisons of means and proportions across MSD groups
+- GLM with log link and gamma distribution to model cost data
+- Covariate adjustment: age, sex, region, insurance, comorbidities
+
+All code used for the analysis is located in the `R/` folder of this repository.
+
+## Load Cohort
+
+meps_cohort <- readRDS("../data/derived/meps_t2d_msd_cohort.rds")
+
+head(meps_cohort)
+
+## Table 1: Baseline Characteristics
+
+tab1 <- read.csv("../output/tables/table1_descriptive_t2d_msd.csv")
+
+knitr::kable(
+  tab1,
+  caption = "Table 1. Baseline Characteristics of Adults with T2D, Stratified by MSD Status",
+  format = "html"
+)
+
+## GLM Model Results
+
+glm_results <- read.csv("../output/tables/glm_cost_model_msd_t2d.csv")
+
+knitr::kable(
+  glm_results,
+  caption = "Table 2. Adjusted Incremental Costs Associated with MSD among Adults with T2D",
+  format = "html"
+)
+
+## Healthcare Expenditures by MSD Status
+
+library(ggplot2)
+
+ggplot(meps_cohort, aes(x = msd_factor, y = total_expenditure)) +
+  geom_boxplot(fill = c("#4D94FF", "#FF6666")) +
+  labs(
+    title = "Annual Healthcare Expenditures by Musculoskeletal Disorder Status",
+    x = "MSD Status",
+    y = "Total Expenditures ($)"
+  ) +
+  theme_minimal()
+
+## Conclusions
+
+In this MEPS-based analysis, adults with type 2 diabetes who also reported musculoskeletal disorders had substantially higher annual healthcare expenditures compared with those without MSD. These findings reflect the added clinical and economic burden associated with MSD among T2D patients.
+
+This analysis demonstrates a reproducible HEOR workflow that includes cohort derivation, descriptive analyses, GLM cost modeling, and automated reporting using R Markdown. Such workflows can be extended to support HEOR evidence generation for biopharmaceutical decision-making.
