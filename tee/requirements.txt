@@ -1,0 +1,7 @@
+
+## 2) `tee/requirements.txt` (lightweight)
+```text
+pandas
+numpy
+scikit-learn
+tqdm
