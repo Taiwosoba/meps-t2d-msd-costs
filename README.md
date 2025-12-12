@@ -146,4 +146,27 @@ This project demonstrates an end-to-end HEOR/RWE workflow using the 2016 Medical
 - GitHub version control for reproducible workflow
 - Modular project structure aligned with HEOR/RWE best practices
 
+## Timandi Evidence Engine (TEE) — AI-Enabled Workflow Extension (Conceptual)
+### Agentic Workflow Support
+TEE is designed around modular, role-based AI agents that assist with:
+- Drafting study design outlines
+- Scaffolding analysis plans
+- Generating multi-language analytic code templates (R, Python, SAS, Stata)
+- Producing structured, decision-ready summaries for HEOR, Medical, and Commercial teams
+
+An orchestration layer coordinates these agents into repeatable workflows aligned with HEOR best practices.
+
+### Retrieval-Augmented Generation (RAG) — Design Only
+TEE supports retrieval-augmented generation (RAG) to ground AI outputs in trusted evidence sources (e.g., approved literature, internal repositories).
+
+The RAG layer is **described conceptually only** in this public repository.
+
+### Application to the T2D + MSD MEPS Study
+In the context of this analysis, TEE was used to:
+- Rapidly draft consistent study design documentation
+- Generate reusable analytic code skeletons aligned with the existing R pipeline
+- Standardize variable definitions and modeling approaches across similar studies
+
+The validated R scripts in this repository remain the source of truth for similar analyses.
+
 
