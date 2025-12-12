@@ -1,26 +1,11 @@
-# Timandi Evidence Engine (TEE) — Demo Layer for MEPS T2D+MSD Project
+# Timandi Evidence Engine (TEE) — Conceptual Demo
 
-This folder demonstrates how the **Timandi Evidence Engine (TEE)** can accelerate
-HEOR/RWE workflows via:
+This folder illustrates how the Timandi Evidence Engine can support HEOR/RWE
+projects through agentic AI and workflow orchestration.
 
-1) **RAG Evidence Briefs**: Retrieve + summarize public/synthetic references into a structured brief.
-2) **Study Design Automation (Assistive)**: Generate a draft study design outline from a template.
-3) **Multi-language Code Generation (Assistive)**: Generate analysis code skeletons for R / Python / SAS / Stata.
+This is a **design-level demonstration only**:
+- No data
+- No documents
+- No runnable RAG pipelines
 
-## Important Notes
-- This is a **demo** showcasing AI/ML capabilities and workflow acceleration.
-- No proprietary data or MEPS raw files are included.
-
-## Quickstart
-```bash
-cd tee
-pip install -r requirements.txt
-
-# (Optional) Build a simple local index (TF-IDF demo)
-python rag/build_index.py
-
-# Retrieve top documents for a query
-python rag/retrieve.py --query "musculoskeletal disorders type 2 diabetes costs"
-
-# Generate a structured evidence brief (stubbed LLM call)
-python rag/generate_brief.py --query "MSD among T2D: utilization and cost outcomes"
+The focus is on system design, governance, and scalable AI integration.
